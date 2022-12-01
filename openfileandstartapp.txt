@@ -1,0 +1,19 @@
+private void button1_Click(object sender, EventArgs e)
+{
+    OpenFileDialog openFileDialog = new OpenFileDialog();
+    openFileDialog.InitialDirectory = Application.StartupPath;
+    openFileDialog.Filter = "WORD Files(*.doc;*.docx)|*.doc;*.docx|All Files|*.*";
+    if (openFileDialog.ShowDialog() == DialogResult.OK)
+    {
+        string path = openFileDialog.FileName.ToString();
+        textBox1.Text = path;
+    }
+}
+ 
+private void button2_Click(object sender, EventArgs e)
+{
+    ProcessStartInfo startInfo = new ProcessStartInfo();
+    startInfo.FileName = "WINWORD.EXE";
+    startInfo.Arguments = textBox1.Text;
+    Process.Start(startInfo);
+}
